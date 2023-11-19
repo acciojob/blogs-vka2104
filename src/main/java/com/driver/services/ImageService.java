@@ -19,7 +19,7 @@ public class ImageService {
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
         Optional<Blog> blogOpt = blogRepository2.findById(blogId);
-        if(!blogOpt.isPresent()) return new Image();
+//        if(!blogOpt.isPresent()) return new Image();
         Blog blog = blogOpt.get();
 
         Image image = new Image();
@@ -27,8 +27,9 @@ public class ImageService {
         image.setDimensions(dimensions);
         image.setBlog(blog);
         Image savedImage = imageRepository2.save(image);
-
-        blog.getImageList().add(savedImage);
+        List<Image> imageList = blog.getImageList();
+        imageList.add(savedImage);
+        blog.setImageList(imageList);
         blogRepository2.save(blog);
         return savedImage;
     }
