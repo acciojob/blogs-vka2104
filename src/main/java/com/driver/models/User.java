@@ -8,9 +8,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String userName;
+    private String username;
     @Column(nullable = false)
-    private String Password;
+    private String password;
     private String firstName;
     private String lastName;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -19,10 +19,10 @@ public class User {
     public User() {
     }
 
-    public User(int id, String userName, String password, String firstName, String lastName, List<Blog> blogList) {
+    public User(int id, String username, String password, String firstName, String lastName, List<Blog> blogList) {
         this.id = id;
-        this.userName = userName;
-        this.Password = password;
+        this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.blogList = blogList;
@@ -36,20 +36,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return this.userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return this.Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        this.Password = password;
+        this.password = password;
     }
 
     public String getFirstName() {
