@@ -16,10 +16,10 @@ public class ImageService {
     @Autowired
     ImageRepository imageRepository2;
 
-    public void addImage(Integer blogId, String description, String dimensions){
+    public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
         Optional<Blog> blogOpt = blogRepository2.findById(blogId);
-        if(!blogOpt.isPresent()) return;
+        if(!blogOpt.isPresent()) return new Image();
         Blog blog = blogOpt.get();
 
         Image image = new Image();
@@ -30,7 +30,7 @@ public class ImageService {
 
         blog.getImageList().add(savedImage);
         blogRepository2.save(blog);
-//        return savedImage;
+        return savedImage;
     }
 
     public void deleteImage(Integer id){
